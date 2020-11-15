@@ -1,0 +1,18 @@
+{
+  "name": "monster-game-backend",
+  "version": "0.1.0",
+  "author": "Fabian Mieller <kontakt@fabianmieller.de>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ./bin/www",
+    "lint": "eslint --ext js"
+  },
+  "dependencies": {
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "morgan": "~1.9.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.13.0"
+  }
+}
