@@ -22,5 +22,6 @@ module.exports = {
       process.env.NODE_ENV === 'production'
         ? ['error', { vars: 'local', args: 'none', argsIgnorePattern: '^_' }]
         : ['warn', { args: 'none', argsIgnorePattern: '^_' }],
+    'arrow-parens': ['error', 'as-needed'],
   }
 }
