@@ -68,3 +68,6 @@ typings/
 *.njsproj
 *.sln
 *.sw?
+
+# Storage files
+storage/*.sqlite

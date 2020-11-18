@@ -1,32 +1,27 @@
-var express = require('express')
-var logger = require('morgan')
+const express = require('express')
+const logger = require('morgan')
 
 const db = require('./utils/database')
 
-var indexRouter = require('./routes/index')
+const indexRouter = require('./routes/index')
+const usersRouter = require('./routes/users')
 
-var app = express()
-
-// db.all('SELECT * FROM users', (err, rows) => {
-//   if (err) {
-//     throw err
-//   }
-//   rows.forEach(row => {
-//     console.log(row)
-//   })
-// })
+const app = express()
 
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 app.use('/', indexRouter)
+app.use('/users', usersRouter)
 
-db.close(err => {
-  if (err) {
-    return console.error(err.message)
-  }
-  console.log('Close the database connection.')
+process.on('SIGINT', () => {
+  db.close(err => {
+    if (err) {
+      return console.error(err.message)
+    }
+    console.log('Close the database connection.')
+  })
 })
 
 module.exports = app

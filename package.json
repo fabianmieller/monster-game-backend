@@ -14,6 +14,8 @@
     "sqlite3": "^5.0.0"
   },
   "devDependencies": {
+    "db-migrate": "^0.11.11",
+    "db-migrate-sqlite3": "^0.4.0",
     "eslint": "^7.13.0",
     "nodemon": "^2.0.6"
   }
