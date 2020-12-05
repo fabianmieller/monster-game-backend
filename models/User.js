@@ -1,30 +1,26 @@
-const db = require('../utils/database')
+'use strict'
 
-module.exports = class User {
-  constructor(id, oauth_provider, oauth_uid, username, created_at, updated_at) {
-    this.id = id
-    this.oauth_provider = oauth_provider
-    this.oauth_uid = oauth_uid
-    this.username = username
-    this.created_at = created_at
-    this.updated_at = updated_at
-  }
+const { Model } = require('sequelize')
 
-  static fetchAll() {
-    return new Promise((resolve, reject) => {
-      let responseObj
-      db.all('SELECT * FROM users', (err, rows) => {
-        if (err) {
-          responseObj = {
-            error: err
-          }
-          reject(responseObj)
-        }
-        responseObj = {
-          data: rows,
-        }
-        resolve(responseObj)
-      })
-    })
+module.exports = (sequelize, DataTypes) => {
+  class User extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+    }
   }
+  User.init({
+    username: DataTypes.STRING,
+    password: DataTypes.STRING,
+    oauth_provider: DataTypes.STRING,
+    oauth_uid: DataTypes.STRING
+  }, {
+    sequelize,
+    modelName: 'User',
+  })
+  return User
 }

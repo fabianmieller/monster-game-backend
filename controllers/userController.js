@@ -1,9 +1,9 @@
-const User = require('../models/User')
+const { User } = require('../models')
 
 exports.getUsers = (req, res, next) => {
-  User.fetchAll().then(responseObj => {
-    res.status(200).json(responseObj)
-  }).catch(errResponseObj => {
-    res.status(500).json(errResponseObj)
+  User.findAll().then(data => {
+    res.status(200).json({ data })
+  }).catch(error => {
+    res.status(500).json({ error })
   })
 }

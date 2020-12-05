@@ -1,7 +1,7 @@
 const express = require('express')
 const logger = require('morgan')
 
-const db = require('./utils/database')
+const db = require('./models')
 
 const authRouter = require('./routes/auth')
 const indexRouter = require('./routes/index')
@@ -25,12 +25,13 @@ app.use((error, req, res, next) => {
   res.status(status).json({ message, data })
 })
 
-process.on('SIGINT', () => {
-  db.close(err => {
+process.on('SIGINT', async () => {
+  await db.sequelize.connectionManager.close().then(_ => {
+    console.log('Close the database connection.')
+  }).catch(err => {
     if (err) {
       return console.error(err.message)
     }
-    console.log('Close the database connection.')
   })
 })
 
