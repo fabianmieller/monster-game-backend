@@ -7,7 +7,7 @@ Monster Game Backend
 Example:
 
 ```sh
-node_modules/.bin/sequelize model:generate --name User --attributes username:string,password:string,oauth_provider:string,oauth_uid:string
+yarn sequelize model:generate --name User --attributes username:string,password:string,oauth_provider:string,oauth_uid:string
 ```
 
 ## Create db seeds
@@ -15,5 +15,13 @@ node_modules/.bin/sequelize model:generate --name User --attributes username:str
 Example:
 
 ```sh
-node_modules/.bin/sequelize seed:generate --name seed-users
+yarn sequelize seed:generate --name seed-users
+```
+
+## Run db migrations
+
+Example:
+
+```sh
+yarn db:migrate
 ```

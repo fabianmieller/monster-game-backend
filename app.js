@@ -1,5 +1,10 @@
 const express = require('express')
 const logger = require('morgan')
+const cors = require('cors')
+const bearerToken = require('express-bearer-token')
+
+const passport = require('passport')
+require('./middlewares/passport')
 
 const db = require('./models')
 
@@ -10,8 +15,13 @@ const usersRouter = require('./routes/users')
 const app = express()
 
 app.use(logger('dev'))
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(bearerToken())
+
+app.use(passport.initialize())
+app.use(passport.session())
 
 app.use('/', indexRouter)
 app.use('/users', usersRouter)

@@ -6,15 +6,23 @@
   "scripts": {
     "start": "nodemon ./bin/www",
     "lint": "eslint --ext js",
-    "db:migrate": "node_modules/.bin/sequelize db:migrate",
-    "db:seed:all": "node_modules/.bin/sequelize db:seed:all"
+    "db:migrate": "sequelize db:migrate",
+    "db:seed:all": "sequelize db:seed:all",
+    "sequelize": "sequelize"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
     "express": "~4.16.1",
+    "express-bearer-token": "^2.4.0",
     "express-validator": "^6.6.1",
+    "jsonwebtoken": "^8.5.1",
     "morgan": "~1.9.1",
+    "passport": "^0.4.1",
+    "passport-github2": "^0.1.12",
+    "passport-google-oauth": "^2.0.0",
     "sequelize": "^6.3.5",
     "sqlite3": "^5.0.0"
   },

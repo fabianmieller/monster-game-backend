@@ -10,7 +10,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       username: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
+      email: {
+        type: Sequelize.STRING,
+        allowNull: true,
       },
       password: {
         type: Sequelize.STRING,
@@ -23,6 +28,14 @@ module.exports = {
       oauth_uid: {
         type: Sequelize.STRING,
         allowNull: true,
+      },
+      avatar_url: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
+      is_custom_avatar: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
       },
       createdAt: {
         allowNull: false,
